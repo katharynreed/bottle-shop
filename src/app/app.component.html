@@ -1,3 +1,32 @@
-<h1>
-  {{title}}
-</h1>
+    <div class='container'>
+    <h2>This is our bottle shop</h2>
+    <div class='row'>
+      <div class='col-md-4'>
+        <app-keg-detail [childKegList]='kegs' (editClicker)="editKeg($event)" (subtractClicker)="subtractPint($event)" >Loading...</app-keg-detail>
+        <button (click)="showNewKeg()">Add A Keg</button>
+        <div *ngIf='newKeg'>
+            <label for="name">Name</label>
+            <input #name><br>
+            <label for="brand">Brand</label>
+            <input #brand><br>
+            <label for="price">Price</label>
+            <input #price><br>
+            <label for="abv">Alcohol By Volume</label>
+            <input #abv><br>
+            <button (click)="tapNewKeg(name.value, brand.value, price.value, abv.value)">I'd Tap That</button>
+        </div>
+      </div>
+      <div class='col-md-8'>
+        <div *ngIf='displayEditKeg'>
+            <label for="name">Name</label>
+            <input [(ngModel)]="currentKeg.name"><br>
+            <label for="brand">Brand</label>
+            <input [(ngModel)]="currentKeg.brand"><br>
+            <label for="price">Price</label>
+            <input [(ngModel)]="currentKeg.price"><br>
+            <label for="abv">Alcohol By Volume</label>
+            <input [(ngModel)]="currentKeg.abv"><br>
+            <button (click)="doneEditing()">Done</button>
+        </div>
+      </div>
+    </div>

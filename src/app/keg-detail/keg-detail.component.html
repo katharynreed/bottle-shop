@@ -1,0 +1,17 @@
+<p>
+  keg-detail works!
+</p>
+  <div>
+    <ul>
+      <li *ngFor="let keg of childKegList">{{keg.name}}
+        <ul>
+          <li [class]="kegColor(keg)">Brand: {{keg.brand}}</li>
+          <li>Price per Pint: {{keg.price}}</li>
+          <li [class]="boozy(keg)">Alcohol By Volume: {{keg.abv}}</li>
+          <li>Pints Remaining: {{keg.pints}}</li>
+          <button (click)=subtractPintHasBeenClicked(keg)>Serve A Pint</button>
+          <button (click)="editKegHasBeenClicked(keg)">Change Details</button>
+        </ul>
+      </li>
+    </ul>
+  </div>
