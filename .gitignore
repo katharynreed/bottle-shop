@@ -6,6 +6,7 @@
 
 # dependencies
 /node_modules
+/bower-components
 
 # IDEs and editors
 /.idea
