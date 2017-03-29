@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
         <ul>
           <li *ngFor="let keg of kegs">{{keg.name}}
             <ul>
-              <li>Brand: {{keg.brand}}</li>
+              <li [class]="kegColor(keg)">Brand: {{keg.brand}}</li>
               <li>Price per Pint: {{keg.price}}</li>
               <li>Alcohol By Volume: {{keg.abv}}</li>
               <li>Pints Remaining: {{keg.pints}}</li>
@@ -72,6 +72,16 @@ export class AppComponent {
   subtractPint(keg) {
     console.log(keg);
     keg.pints --;
+  }
+
+  kegColor(currentKeg) {
+    if (currentKeg.pints < 122) {
+      return "bg-danger";
+    } else if (currentKeg.pints < 123) {
+      return "bg-warning";
+    } else {
+      return "bg-primary";
+    }
   }
 
   editKeg(keg) {
