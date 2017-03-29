@@ -5,21 +5,35 @@ import { Component } from '@angular/core';
   template: `
     <div class='container'>
     <h2>This is our bottle shop</h2>
-    <div>
-      <ul>
-        <li *ngFor="let keg of kegs">{{keg.name}}
-          <ul>
-            <li>Brand: {{keg.brand}}</li>
-            <li>Price per Pint: {{keg.price}}</li>
-            <li>Alcohol By Volume: {{keg.abv}}</li>
-            <li>Pints Remaining: {{keg.pints}}</li>
-          </ul>
-        </li>
-      </ul>
+    <div class='col-md-4'>
+      <div>
+        <ul>
+          <li *ngFor="let keg of kegs">{{keg.name}}
+            <ul>
+              <li>Brand: {{keg.brand}}</li>
+              <li>Price per Pint: {{keg.price}}</li>
+              <li>Alcohol By Volume: {{keg.abv}}</li>
+              <li>Pints Remaining: {{keg.pints}}</li>
+              <button (click)=subtractPint(keg)>Serve A Pint</button>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <button (click)="showNewKeg()">Add A Keg</button>
+      <div *ngIf='newKeg'>
+          <label for="name">Name</label>
+          <input #name><br>
+          <label for="brand">Brand</label>
+          <input #brand><br>
+          <label for="price">Price</label>
+          <input #price><br>
+          <label for="abv">Alcohol By Volume</label>
+          <input #abv><br>
+          <button (click)="tapNewKeg(name.value, brand.value, price.value, abv.value)">I'd Tap That</button>
+
+      </div>
     </div>
-    <button (click)="showNewKeg()">Add A Keg</button>
-    <div *ngIf='newKeg'>
-      <h1>Here will go some stuff</h1>
+    <div class='col-md-8'>
     </div>
   `,
   styleUrls: ['./app.component.css']
@@ -34,6 +48,16 @@ export class AppComponent {
   ];
   showNewKeg() {
     this.newKeg = true;
+  }
+  tapNewKeg(inputname, inputbrand, inputprice, inputabv) {
+    console.log(inputname);
+    var newKeg = new Keg(inputname, inputbrand, inputprice, inputabv);
+    this.kegs.push(newKeg);
+  }
+
+  subtractPint(keg) {
+    console.log(keg);
+    keg.pints --;
   }
 }
 
