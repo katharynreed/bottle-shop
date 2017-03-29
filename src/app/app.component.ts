@@ -12,7 +12,7 @@ import { Component } from '@angular/core';
             <ul>
               <li [class]="kegColor(keg)">Brand: {{keg.brand}}</li>
               <li>Price per Pint: {{keg.price}}</li>
-              <li>Alcohol By Volume: {{keg.abv}}</li>
+              <li [class]="boozy(keg)">Alcohol By Volume: {{keg.abv}}</li>
               <li>Pints Remaining: {{keg.pints}}</li>
               <button (click)=subtractPint(keg)>Serve A Pint</button>
               <button (click)="editKeg(keg)">Change Details</button>
@@ -81,6 +81,15 @@ export class AppComponent {
       return "bg-warning";
     } else {
       return "bg-primary";
+    }
+  }
+  boozy(keg) {
+    if (keg.abv < 5) {
+      return "bg-success";
+    } else if (keg.abv < 9) {
+      return "bg-warning";
+    } else {
+      return "bg-danger";
     }
   }
 
