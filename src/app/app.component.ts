@@ -15,6 +15,7 @@ import { Component } from '@angular/core';
               <li>Alcohol By Volume: {{keg.abv}}</li>
               <li>Pints Remaining: {{keg.pints}}</li>
               <button (click)=subtractPint(keg)>Serve A Pint</button>
+              <button (click)="editKeg(keg)">Change Details</button>
             </ul>
           </li>
         </ul>
@@ -34,6 +35,17 @@ import { Component } from '@angular/core';
       </div>
     </div>
     <div class='col-md-8'>
+    <div *ngIf='displayEditKeg'>
+        <label for="name">Name</label>
+        <input [(ngModel)]="currentKeg.name"><br>
+        <label for="brand">Brand</label>
+        <input [(ngModel)]="currentKeg.brand"><br>
+        <label for="price">Price</label>
+        <input [(ngModel)]="currentKeg.price"><br>
+        <label for="abv">Alcohol By Volume</label>
+        <input [(ngModel)]="currentKeg.abv"><br>
+        <button (click)="doneEditing()">Done</button>
+
     </div>
   `,
   styleUrls: ['./app.component.css']
@@ -41,6 +53,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   newKeg = false;
   title = 'Bottle Shop';
+  currentKeg = null;
+  displayEditKeg = false;
   kegs: Keg[] = [
     new Keg('Fck U Up', 'Deschutes', 6.5, 12),
     new Keg('Pretty OK', 'PBR Equivalent', 2.5, 3.75),
@@ -58,6 +72,16 @@ export class AppComponent {
   subtractPint(keg) {
     console.log(keg);
     keg.pints --;
+  }
+
+  editKeg(keg) {
+    this.currentKeg = keg;
+    this.displayEditKeg = true;
+  }
+
+  doneEditing() {
+    this.currentKeg = null;
+    this.displayEditKeg = false;
   }
 }
 
