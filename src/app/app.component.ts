@@ -21,9 +21,9 @@ export class AppComponent {
   showNewKeg() {
     this.newKeg = true;
   }
-  tapNewKeg(inputname, inputbrand, inputprice, inputabv) {
-    console.log(inputname);
-    var newKeg = new Keg(inputname, inputbrand, inputprice, inputabv);
+
+  tapNewKeg(params) {
+    var newKeg = new Keg(params.name, params.brand, params.price, params.abv);
     this.kegs.push(newKeg);
   }
 

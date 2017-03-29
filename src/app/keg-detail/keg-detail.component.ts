@@ -25,9 +25,6 @@ export class KegDetailComponent implements OnInit {
     this.subtractClicker.emit(kegToEdit);
   }
 
-
-
-
   kegColor(currentKeg) {
     if (currentKeg.pints < 122) {
       return "bg-danger";
@@ -37,6 +34,7 @@ export class KegDetailComponent implements OnInit {
       return "bg-primary";
     }
   }
+  
   boozy(keg) {
     if (keg.abv < 5) {
       return "bg-success";
