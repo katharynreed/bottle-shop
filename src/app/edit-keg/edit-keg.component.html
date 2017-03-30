@@ -1,0 +1,11 @@
+<div *ngIf='childSelectedKeg'>
+    <label for="name">Name</label>
+    <input [(ngModel)]="childSelectedKeg.name"><br>
+    <label for="brand">Brand</label>
+    <input [(ngModel)]="childSelectedKeg.brand"><br>
+    <label for="price">Price</label>
+    <input [(ngModel)]="childSelectedKeg.price"><br>
+    <label for="abv">Alcohol By Volume</label>
+    <input [(ngModel)]="childSelectedKeg.abv"><br>
+    <button (click)="doneButtonClicked()">Done</button>
+</div>

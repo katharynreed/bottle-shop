@@ -10,7 +10,6 @@ export class AppComponent {
   newKeg = false;
   title = 'Bottle Shop';
   currentKeg = null;
-  displayEditKeg = false;
 
   kegs: Keg[] = [
     new Keg('Fck U Up', 'Deschutes', 6.5, 12),
@@ -29,12 +28,10 @@ export class AppComponent {
 
   editKeg(keg) {
     this.currentKeg = keg;
-    this.displayEditKeg = true;
   }
 
   doneEditing() {
     this.currentKeg = null;
-    this.displayEditKeg = false;
   }
 
   subtractPint(keg) {

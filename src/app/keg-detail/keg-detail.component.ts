@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Keg } from '../keg.model';
 import { AppComponent } from '../app.component';
 
@@ -7,15 +7,10 @@ import { AppComponent } from '../app.component';
   templateUrl: './keg-detail.component.html',
   styleUrls: ['./keg-detail.component.css']
 })
-export class KegDetailComponent implements OnInit {
+export class KegDetailComponent {
   @Input() childKegList: Keg[];
   @Output() editClicker = new EventEmitter();
   @Output() subtractClicker = new EventEmitter();
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
   editKegHasBeenClicked(kegToEdit: Keg){
     this.editClicker.emit(kegToEdit);
@@ -34,7 +29,7 @@ export class KegDetailComponent implements OnInit {
       return "bg-primary";
     }
   }
-  
+
   boozy(keg) {
     if (keg.abv < 5) {
       return "bg-success";
