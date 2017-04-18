@@ -1,6 +1,6 @@
 # BottleShop
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
+This web page was built to learn basic AngularJS project set up and not a lot more than that. It was a useful beginner exersize in working with JS and AngularJS. 
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
